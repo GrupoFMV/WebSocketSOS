@@ -307,10 +307,13 @@ function verifyOrdemAnterior(horaOrdemAnterior, horaOrdemAtual) {
 }
 
 function addMinutesToTime(initialTime, minutesToAdd) {
-  let updatedTime = new Date(initialTime);
+  let isoTime = initialTime.replace(' ', 'T') + 'Z';
+  let updatedTime = new Date(isoTime);
   updatedTime.setMinutes(updatedTime.getMinutes() + minutesToAdd);
-  return updatedTime.toISOString().slice(0, 19).replace("T", " ");
+  let retorno = updatedTime.toISOString().slice(0, 19).replace("T", " ");
+  return retorno;
 }
+
 
 function getCurrentTime() {
   const options = {

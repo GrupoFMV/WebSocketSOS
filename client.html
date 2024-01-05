@@ -12,7 +12,7 @@
     <button onclick="IniciarAtendimento()">Enviar</button>
     <br> <br>
     <label for="message">Concluir Atendimento:</label>
-    <button onclick="sendMessage()">Enviar</button>
+    <button onclick="concluirAtendimento()">Enviar</button>
     <br> <br>
     <label for="message">Atendimento Impedido:</label>
     <button onclick="sendMessage()">Enviar</button>
@@ -24,9 +24,14 @@
     <button onclick="iniciarDeslocamento()">Enviar</button>
     <br> <br>
 
-    <label for="message">Iniciar Atendimento:</label>
-    <button onclick="sendMessage()">Enviar</button>
-
+    <label for="message">Finalizar Deslocamento:</label>
+    <button onclick="FinalizarDeslocamento()">Enviar</button>
+    <br> <br>
+    <label for="message">Iniciar Descanso:</label>
+    <button onclick="IniciarDescanso()">Enviar</button>
+    <br> <br>
+    <label for="message">Terminar Descanso:</label>
+    <button onclick="FinalizarDescanso()">Enviar</button>
     <div id="output"></div>
 
     <script>
@@ -35,6 +40,7 @@
       function IniciarAtendimento() {
         const data = {
           chave: "IniciarAtendimento",
+          idChamado: 82
         };
         socket.send(JSON.stringify(data));
       }
@@ -42,6 +48,7 @@
       function concluirAtendimento() {
         const data = {
           chave: "concluirAtendimento",
+          idChamado: 82
         };
         socket.send(JSON.stringify(data));
       }
@@ -51,6 +58,33 @@
           chave: "iniciarDeslocamento",
           tecnico: 1,
           idChamado: 82
+
+        };
+        socket.send(JSON.stringify(data));
+      }
+
+      function FinalizarDeslocamento() {
+        const data = {
+          chave: "finalizarDeslocamento",
+          idDeslocamento: 25
+
+        };
+        socket.send(JSON.stringify(data));
+      }
+
+      function IniciarDescanso() {
+        const data = {
+          chave: "iniciarDescanso",
+          idTecnico: 1
+
+        };
+        socket.send(JSON.stringify(data));
+      }
+
+      function FinalizarDescanso() {
+        const data = {
+          chave: "FinalizarDescanso",
+          idDescanso: 26
 
         };
         socket.send(JSON.stringify(data));

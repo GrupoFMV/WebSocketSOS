@@ -110,11 +110,7 @@ exports.IniciarDescanso = async (idTecnico) => {
 
   await conn.query(
     `
-    INSERT INTO os_eventos 
-    (id_tecnico, evento_inicio,
-       tipo, status, evento_chamado) VALUE
-        ('${idTecnico}','${dataAtual}','1','7')
-        `
+    INSERT INTO os_eventos (id_tecnico, evento_inicio,tipo, status) VALUE ('${idTecnico}','${dataAtual}','1','7') `
   );
 };
 
@@ -125,7 +121,7 @@ exports.FinalizarDescanso = async (idDescanso) => {
 
   await conn.query(
     `
-    update os_eventos set status ='4', evento_fim = '${dataAtual}}' where id = '${idDescanso}' 
+    update os_eventos set status ='4', evento_fim = '${dataAtual}' where id = '${idDescanso}' 
         `
   );
 };

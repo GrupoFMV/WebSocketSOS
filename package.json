@@ -1,15 +1,21 @@
 {
-    "name": "websocket-server",
-    "version": "1.0.0",
-    "description": "Um servidor WebSocket simples",
-    "main": "server.js",
-    "scripts": {
-      "start": "node server.js"
-    },
-    "dependencies": {
-      "cors": "^2.8.5",
-      "express": "^4.18.2",
-      "http": "^0.0.1-security",
-      "ws": "^7.5.9"
-    }
+  "name": "websocket-server",
+  "version": "1.0.0",
+  "description": "Um servidor WebSocket simples",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon server.js",
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "http": "^0.0.1-security",
+    "mysql2": "^3.6.5",
+    "ws": "^7.5.9"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.22"
   }
+}

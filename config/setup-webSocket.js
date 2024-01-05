@@ -17,21 +17,42 @@ function initWebSocket(server) {
       let response = null;
 
       switch (userData.chave) {
-        case "iniciarChamado":
-          response = await controllers.IniciarATendimento();
+        case "concluirAtendimento":
+          response = await controllers.concluirAtendimento(userData.idChamado);
           break;
 
-        case "finalizarChamado":
-          response = controllers.IniciarATendimento();
+        case "IniciarAtendimento":
+          response = await controllers.IniciarAtendimento(userData.idChamado);
           break;
 
-        case "finalizarChamado":
-          response = controllers.IniciarATendimento();
+        case "AtendimentoImpedido":
+          response = await controllers.AtendimentoImpedido(userData.idChamado);
           break;
 
-        case "finalizarChamado":
-          response = controllers.IniciarATendimento();
+        case "CancelarAtendimento":
+          response = await controllers.CancelarAtendimento(userData.idChamado);
           break;
+
+        case "Orcamento":
+          response = await controllers.Orcamento(userData.idChamado);
+          break;
+
+        case "iniciarDeslocamento":
+          response = await controllers.IniciarDeslocamento(userData.tecnico, userData.idChamado);
+          break;
+
+        case "finalizarDeslocamento":
+          response = await controllers.FinalizarDeslocamento(userData.idDeslocamento);
+          break;
+
+        case "iniciarDescanso":
+          response = await controllers.IniciarDescanso(userData.idTecnico);
+          break;
+
+        case "FinalizarDescanso":
+          response = await controllers.FinalizarDescanso(userData.idDescanso);
+          break;
+
         default:
           break;
       }

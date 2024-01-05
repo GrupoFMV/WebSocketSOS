@@ -313,8 +313,19 @@ function addMinutesToTime(initialTime, minutesToAdd) {
 }
 
 function getCurrentTime() {
-  let currentDate = new Date();
-  return currentDate.toISOString().slice(0, 19).replace("T", " ");
+  const options = {
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+    hour: '2-digit',
+    minute: '2-digit',
+    second: '2-digit',
+    timeZone: 'America/Sao_Paulo',
+  };
+
+  const brasilDate = new Intl.DateTimeFormat('en-US', options).format(new Date());
+
+  return brasilDate.replace(/\//g, '-').replace(',', '');
 }
 
 function compareCurrentTime(timeString, timezone = "America/Sao_Paulo") {

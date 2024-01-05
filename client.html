@@ -6,17 +6,52 @@
     <title>WebSocket Client</title>
   </head>
   <body>
-    <label for="message">Mensagem:</label>
-    <input type="text" id="message" name="message" />
+    <h1>Simulação App</h1>
+
+    <label for="message">Iniciar Atendimento:</label>
+    <button onclick="IniciarAtendimento()">Enviar</button>
+    <br> <br>
+    <label for="message">Concluir Atendimento:</label>
     <button onclick="sendMessage()">Enviar</button>
+    <br> <br>
+    <label for="message">Atendimento Impedido:</label>
+    <button onclick="sendMessage()">Enviar</button>
+    <br> <br>
+    <label for="message">Cancelar Atendimento:</label>
+    <button onclick="sendMessage()">Enviar</button>
+    <br> <br>
+    <label for="message">Iniciar Deslocamento:</label>
+    <button onclick="iniciarDeslocamento()">Enviar</button>
+    <br> <br>
+
+    <label for="message">Iniciar Atendimento:</label>
+    <button onclick="sendMessage()">Enviar</button>
+
     <div id="output"></div>
 
     <script>
       const socket = new WebSocket("ws://localhost:8080");
 
-      function sendMessage() {
+      function IniciarAtendimento() {
         const data = {
-          chave: "iniciarChamado",
+          chave: "IniciarAtendimento",
+        };
+        socket.send(JSON.stringify(data));
+      }
+
+      function concluirAtendimento() {
+        const data = {
+          chave: "concluirAtendimento",
+        };
+        socket.send(JSON.stringify(data));
+      }
+
+      function iniciarDeslocamento() {
+        const data = {
+          chave: "iniciarDeslocamento",
+          tecnico: 1,
+          idChamado: 82
+
         };
         socket.send(JSON.stringify(data));
       }

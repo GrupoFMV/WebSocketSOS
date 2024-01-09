@@ -15,10 +15,13 @@
     <button onclick="concluirAtendimento()">Enviar</button>
     <br> <br>
     <label for="message">Atendimento Impedido:</label>
-    <button onclick="sendMessage()">Enviar</button>
+    <button onclick="AtendimentoImpedido()">Enviar</button>
     <br> <br>
     <label for="message">Cancelar Atendimento:</label>
-    <button onclick="sendMessage()">Enviar</button>
+    <button onclick="CancelarAtendimento()">Enviar</button>
+    <br> <br>
+    <label for="message">Solicitar Orçamento:</label>
+    <button onclick="Orcamento()">Enviar</button>
     <br> <br>
     <label for="message">Iniciar Deslocamento:</label>
     <button onclick="iniciarDeslocamento()">Enviar</button>
@@ -40,7 +43,7 @@
       function IniciarAtendimento() {
         const data = {
           chave: "IniciarAtendimento",
-          idChamado: 82
+          idChamado: 86
         };
         socket.send(JSON.stringify(data));
       }
@@ -48,7 +51,7 @@
       function concluirAtendimento() {
         const data = {
           chave: "concluirAtendimento",
-          idChamado: 82
+          idChamado: 86
         };
         socket.send(JSON.stringify(data));
       }
@@ -57,7 +60,7 @@
         const data = {
           chave: "iniciarDeslocamento",
           tecnico: 1,
-          idChamado: 82
+          idChamado: 83
 
         };
         socket.send(JSON.stringify(data));
@@ -66,7 +69,7 @@
       function FinalizarDeslocamento() {
         const data = {
           chave: "finalizarDeslocamento",
-          idDeslocamento: 25
+          idDeslocamento: 27
 
         };
         socket.send(JSON.stringify(data));
@@ -84,7 +87,34 @@
       function FinalizarDescanso() {
         const data = {
           chave: "FinalizarDescanso",
-          idDescanso: 26
+          idDescanso: 28
+
+        };
+        socket.send(JSON.stringify(data));
+      }
+
+      function AtendimentoImpedido() {
+        const data = {
+          chave: "AtendimentoImpedido",
+          idChamado: 84
+
+        };
+        socket.send(JSON.stringify(data));
+      }
+
+      function CancelarAtendimento() {
+        const data = {
+          chave: "CancelarAtendimento",
+          idChamado: 85
+
+        };
+        socket.send(JSON.stringify(data));
+      }
+
+      function Orcamento() {
+        const data = {
+          chave: "Orcamento",
+          idChamado: 86
 
         };
         socket.send(JSON.stringify(data));

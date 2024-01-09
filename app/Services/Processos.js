@@ -41,7 +41,7 @@ exports.CancelarAtendimento = async (idChamado) => {
     `
         UPDATE chamados
         SET
-          chamado_status = '3',
+          chamado_status = '3'
         WHERE
           chamado_id = '${idChamado}'
         `
@@ -55,7 +55,7 @@ exports.AtendimentoImpedido = async (idChamado) => {
     `
         UPDATE chamados
         SET
-          chamado_status = '5',
+          chamado_status = '5'
         WHERE
           chamado_id = '${idChamado}'
         `
@@ -69,7 +69,7 @@ exports.Orcamento = async (idChamado) => {
     `
         UPDATE chamados
         SET
-          chamado_status = '6',
+          chamado_status = '6'
         WHERE
           chamado_id = '${idChamado}'
         `
@@ -98,7 +98,7 @@ exports.FinalizarDeslocamento = async (idDeslocamento) => {
 
   await conn.query(
     `
-    update os_eventos set status ='4', evento_fim = '${dataAtual}}' where id = '${idDeslocamento}' 
+    update os_eventos set status ='4', evento_fim = '${dataAtual}' where id = '${idDeslocamento}' 
         `
   );
 };

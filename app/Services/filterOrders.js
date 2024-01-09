@@ -253,7 +253,7 @@ function gerarHoraInicio(OsPorTecnicoFunction) {
         ordensAlteradas.push(ordem);
         continue;
       }
-      if (ordem["os_status_nome"] || ordem["statusName"] == "Concluido") {
+      if (ordem["os_status_nome"] == "Concluido" || ordem["statusName"] == "Concluido") {
         ordem["start"] = ordem["chamado_hora_inicio"]
           ? ordem["chamado_hora_inicio"]
           : ordem["evento_inicio"];

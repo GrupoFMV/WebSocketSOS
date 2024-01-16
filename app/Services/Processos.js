@@ -94,7 +94,7 @@ exports.IniciarDeslocamento = async (idTecnico, idChamado) => {
 exports.FinalizarDeslocamento = async (idDeslocamento) => {
   const conn = await conexao();
 
-  const dataAtual = obterDataAtualFormatada();
+  const dataAtual = obterDataAtualFormatadaMenos1Minuto();
 
   await conn.query(
     `
@@ -128,6 +128,21 @@ exports.FinalizarDescanso = async (idDescanso) => {
 
 function obterDataAtualFormatada() {
   const dataAtual = new Date();
+  const ano = dataAtual.getFullYear();
+  const mes = String(dataAtual.getMonth() + 1).padStart(2, "0");
+  const dia = String(dataAtual.getDate()).padStart(2, "0");
+  const horas = String(dataAtual.getHours()).padStart(2, "0");
+  const minutos = String(dataAtual.getMinutes()).padStart(2, "0");
+  const segundos = String(dataAtual.getSeconds()).padStart(2, "0");
+
+  return `${ano}-${mes}-${dia} ${horas}:${minutos}:${segundos}`;
+}
+
+
+function obterDataAtualFormatadaMenos1Minuto() {
+  const dataAtual = new Date();
+  dataAtual.setMinutes(dataAtual.getMinutes() - 1);
+
   const ano = dataAtual.getFullYear();
   const mes = String(dataAtual.getMonth() + 1).padStart(2, "0");
   const dia = String(dataAtual.getDate()).padStart(2, "0");

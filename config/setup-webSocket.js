@@ -53,6 +53,10 @@ function initWebSocket(server) {
           response = await controllers.FinalizarDescanso(userData.idDescanso);
           break;
 
+        case "IniciarAtendimentoComDeslocamento":
+          response = await controllers.IniciarAtendimentoComDeslocamento(userData.idChamado, userData.idEvento)
+        break;
+        
         default:
           break;
       }

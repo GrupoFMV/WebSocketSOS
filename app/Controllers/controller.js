@@ -126,5 +126,21 @@ module.exports = {
     };
 
     return data;
+  },
+
+  async IniciarAtendimentoComDeslocamento(idChamado, idEvento) {
+    await services.FinalizarDeslocamento(idEvento);
+
+    await services.IniciarAtendimento(idChamado);
+
+    const ordensDirecionadas = await filterOrders.buscarOrdensDirecionadas();
+    const tecnicos = await filterOrders.buscarUsers();
+
+    const data = {
+      ordens: ordensDirecionadas,
+      tecnicos: tecnicos,
+    };
+
+    return data;
   }
 };
